@@ -1,0 +1,74 @@
+/* Загальні налаштування сторінки */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  flex-direction: column; /* розташування елементів вертикально */
+  align-items: center;    /* вирівнювання по центру */
+  margin: 0;
+}
+
+/* Заголовок */
+h1 {
+  text-align: center;
+  color: #333;
+  margin: 30px 0 10px 0; /* відступи зверху і знизу */
+}
+
+/* Контейнер форми */
+form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px; /* заокруглені кути */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* легка тінь */
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Підписи до полів */
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Поля вводу */
+input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Кнопка */
+button {
+  margin-top: 15px;
+  padding: 12px;
+  background: #28a745; /* зелений */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s; /* плавний ефект при наведенні */
+}
+
+/* Кнопка при наведенні */
+button:hover {
+  background: #218838; /* темніший зелений */
+}
+
+/* Респонсивність для мобільних */
+@media (max-width: 480px) {
+  form {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  input, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
