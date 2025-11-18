@@ -10,19 +10,22 @@
   <h1>Реєстрація</h1>
   <form id="registrationForm">
     <label for="firstName">Ім'я:</label>
-    <input type="text" id="firstName" name="firstName">
+    <input type="text" id="firstName" name="firstName" required>
 
     <label for="lastName">Прізвище:</label>
-    <input type="text" id="lastName" name="lastName">
+    <input type="text" id="lastName" name="lastName" required>
 
     <label for="email">Електронна пошта:</label>
-    <input type="text" id="email" name="email">
+    <input type="text" id="email" name="email" required
 
     <label for="password">Пароль:</label>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="password" required>
 
     <button type="submit">Відправити</button>
+
+    <p id="message" style="text-align:center; color:#333; margin-top:10px;"></p>
   </form>
+
   <script src="script.js"></script>
 </body>
 </html>

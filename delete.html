@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Видалити користувача</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Видалити користувача</h1>
+  <p>Ви впевнені, що хочете видалити цього користувача?</p>
+  <button id="confirmDelete">Так, видалити</button>
+  <button onclick="window.location.href='users.html'">Скасувати</button>
+
+  <script>
+    const id = new URLSearchParams(window.location.search).get("id");
+    document.getElementById("confirmDelete").addEventListener("click", async () => {
+      await fetch(`/api/users/${id}`, { method: "DELETE" });
+      window.location.href = "users.html";
+    });
+  </script>
+</body>
+</html>

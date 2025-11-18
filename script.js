@@ -1,16 +1,33 @@
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+document.getElementById("registrationForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
-  let firstName = document.getElementById("firstName").value.trim();
-  let lastName = document.getElementById("lastName").value.trim();
-  let email = document.getElementById("email").value.trim();
-  let password = document.getElementById("password").value.trim();
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const messageEl = document.getElementById("message");
 
-  if (!firstName || !lastName || !email || !password) {
-    alert("Потрібно заповнити всі поля.");
+  const check = await fetch(`/api/check-email?email=${encodeURIComponent(email)}`);
+  const exists = await check.json();
+
+  if (exists.exists) {
+    messageEl.textContent = "Ця електронна адреса вже зареєстрована";
+    messageEl.style.color = "red";
     return;
   }
 
-  alert("Форма відправлена.");
-  this.submit();
+  const res = await fetch("/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ firstName, lastName, email, password })
+  });
+
+  if (res.ok) {
+    messageEl.textContent = "Реєстрація успішна";
+    messageEl.style.color = "green";
+    document.getElementById("registrationForm").reset();
+  } else {
+    messageEl.textContent = "Помилка при реєстрації";
+    messageEl.style.color = "red";
+  }
 });
